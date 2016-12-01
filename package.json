@@ -1,0 +1,25 @@
+{
+  "name": "educateOnline",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "jquery": "^3.1.1",
+    "marked": "^0.3.6",
+    "moment": "^2.16.0",
+    "mysql": "^2.12.0",
+    "xtemplate": "^4.6.0",
+    "xtpl": "^3.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
