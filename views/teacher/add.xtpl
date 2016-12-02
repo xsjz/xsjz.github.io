@@ -1,37 +1,38 @@
 {{extend("../layout/main")}}
-{{#block("content")}
+{{#block("content")}}
 			<div class="body teacher">
 				<!-- 面包屑 -->
 				<ol class="breadcrumb">
-					<li><a href="javascript:;">讲师管理</a></li>
+					<li><a href="/teacher/list">讲师管理</a></li>
 					<li class="active">讲师添加</li>
 				</ol>
 				<div class="teacher-add">
-					<form id="addTeacher" action="" class="form-horizontal col-md-offset-2">
+					<form id="addTeacher"  action="{{#if (teacher.tc_id)}} /teacher/edit {{else}} /teacher/add {{/if}}" class="form-horizontal col-md-offset-2">
+						<input type="hidden" name="tc_id" value="{{teacher.tc_id}}">
 						<div class="form-group">
 							<label for="" class="col-md-3 control-label">姓名</label>
 							<div class="col-md-4">
-								<input type="text" class="form-control input-sm" placeholder="讲师名称">
+								<input type="text" name="tc_name" class="form-control input-sm" placeholder="{{#if(teacher.tc_id)}}{{teacher.tc_name}}{{else}}讲师名称{{/if}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-md-3 control-label">密码</label>
 							<div class="col-md-4">
-								<input type="password" class="form-control input-sm">
+								<input type="password" name="tc_pass" class="form-control input-sm" value="{{#if(teacher.tc_id)}}{{teacher.tc_pass}}{{/if}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-md-3 control-label">入职时间</label>
 							<div class="col-md-4">
-								<input type="text" class="form-control input-sm">
+								<input type="text" name="tc_join_time" class="form-control input-sm" value="{{#if(teacher.tc_id)}}{{teacher.tc_join_time}}{{/if}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-md-3 control-label">类型</label>
 							<div class="col-md-2">
-								<select name="" class="form-control input-sm">
-									<option value="">讲师</option>
-									<option value="">管理员</option>
+								<select name="tc_type" class="form-control input-sm">
+									<option value="1" {{#if(teacher.tc_type)}}selected{{else}}{{/if}}>讲师</option>
+									<option value="0" {{#if(teacher.tc_type)}}{{else}}selected{{/if}}>管理员</option>
 								</select>
 							</div>
 						</div>
@@ -39,19 +40,25 @@
 							<label for="" class="col-md-3 control-label">性别</label>
 							<div class="col-md-4">
 								<label class="radio-inline">
-									<input type="radio" checked> 男
+									<input type="radio" name="tc_gender" {{#if(teacher.tc_type)}}{{else}}checked{{/if}} value="0"> 男
 								</label>
 								<label class="radio-inline">
-									<input type="radio"> 女
+									<input name="tc_gender" {{#if(teacher.tc_type)}}checked{{/if}} value="1" type="radio"> 女
 								</label>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-7">
-								<a href="./advert_list.html" class="btn btn-success btn-sm pull-right"> 添 加 </a>
+								<input type="submit" class="btn btn-success btn-sm pull-right" value=" 添 加 ">
 							</div>							
 						</div>
 					</form>
 				</div>
 			</div>
+{{/block}}
+
+{{#block("script")}}
+<script>
+	seajs.use('/scripts/add');
+</script>
 {{/block}}

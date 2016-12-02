@@ -14,7 +14,7 @@
     <div class="navs">
       <ul class="list-unstyled">
         <li>
-          <a href="/index" class="active">
+          <a href="/index">
             <i class="fa fa-home"></i>
             仪表盘
           </a>
@@ -91,6 +91,8 @@
 {{/block}}
 {{#block("main")}}
 <!-- 主体 -->
+<div class="main">
+
     <div class="container-fluid">
       <!-- 头部 -->
       <div class="header">
@@ -126,6 +128,10 @@
             </li>
           </ul>
         </nav>      
-      </div>
+      </div>   
+      {{{block("content")}}}
+</div>
 {{/block}}
+
+     
 
